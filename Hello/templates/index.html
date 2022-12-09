@@ -1,0 +1,70 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+	<title> Main </title>
+	<link rel="stylesheet" href="{% static "style.css" %}">
+</head>
+<!-- <body>
+	<div class="container">
+		<div class="search-bar">
+			<div id ="select">
+				<p id="54e3"> categories</p>
+				<img src="">
+				<ul id="list">
+					<li class="options">Web Of Science</li>
+					<li class="options">PubMed</li>
+					<li class="options">Scopus</li>
+				</ul>
+            </div>
+			            <form method="get" action="/search" >
+                
+                    
+                    <input name ="query"type="text"value=""placeholder="search"  id="query">
+                        
+            </div>
+ -->
+
+
+  <body>
+	<div class="container">
+		<div class="search-bar">
+			<form method="get" action="/search">
+      
+      <label for="categories">Categories</label>
+      <ul id="lissst">
+      <select name="cat" id="cat" multiple>
+        <option value="wos">Web Of Science</option>
+        <option value="pubmed">PubMed</option>
+        <option value="scopus">Scopus</option>
+      </ul>
+      </select>
+	<input name="db_query" type="text" value="" placeholder="Query" id="db_query">
+	<input name="query" type="text" value="" placeholder="search" id="query">
+	<input type="submit" value="Submit">  		
+</form>
+<script>
+	let select = document.getElementById("select");
+	let list=document.getElementById("list");
+	let selectText=document.getElementById("selectText");
+	let inputfield=document.getElementById("inputfield");
+	let options=document.getElementsByClassName("options");
+	select.onclick=function(){
+		list.classList.toggle("open");
+	}
+
+
+for(option of options){
+	option.onclick=function(){
+		selectText.innerHTML=this.innerHTML;
+		inputfield.placeholder="Search In "+selectText.innerHTML;
+    
+
+	}
+}
+
+</script>
+</body>
+</html>
+
