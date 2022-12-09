@@ -1,0 +1,47 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+	<title> Main </title>
+	<link rel="stylesheet" href="{% static "style.css" %}">
+</head>
+
+  <body>
+	<div class="container">
+		<div class="search-bar">
+			<form method="get" action="/search">
+      
+      <label for="categories">Categories</label>
+      <ul id="lissst">
+      <select name="cat" id="cat" multiple>
+        <option value="wos">Web Of Science</option>
+        <option value="pubmed">PubMed</option>
+        <option value="scopus">Scopus</option>
+      </ul>
+      </select>
+	{% comment %} <input name="db_query" type="text" value="" placeholder="Query" id="db_query">  {% endcomment %}
+	<input name="query" type="text" value="" placeholder="search" id="query">
+	<input type="submit" value="Submit">
+	  		
+<div class="select"><p>How to use Query: Use AND, OR for multiple Keywords <br>Sample Query 1: Water and Machine learning <br>Sample Query 2: Water or Machine learning <br>Sample Query 3: Water or liquid and Machine learning <br>Sample Query 4: Water or liquid and Machine learning or artificial intelligence</p></div>
+<script>
+	let select = document.getElementById("select");
+	let list=document.getElementById("list");
+	let selectText=document.getElementById("selectText");
+	let inputfield=document.getElementById("inputfield");
+	let options=document.getElementsByClassName("options");
+	select.onclick=function(){
+		list.classList.toggle("open");
+	}
+for(option of options){
+	option.onclick=function(){
+		selectText.innerHTML=this.innerHTML;
+		inputfield.placeholder="Search In "+selectText.innerHTML;
+	}
+}
+
+</script>
+</body>
+</html>
+

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+{% block title %}{{excel.Title}}{% endblock title %}
+
+
+{% load static %}
+  
+
+{% block content %}
+
+{%for excel in allPosts%}
+
+    
+
+
+            <div class="card-body">
+              <h5 class="card-title">Title:{{excel.Title}}</h5>
+              <p class="card-text">Written By:{{excel.authors}}.</p>
+              <p class="card-text">Id:{{excel.dbid}}.</p>  
+              <form method="get" action="/venue_csv">
+
+              <input type="checkbox" name="ids" value={{excel.dbid}}>
+              <label for={{excel.dbid}}> Relavant</label><br>
+              <hr></hr>
+              
+            
+              
+            </div>
+            
+
+
+
+
+          </div>
+
+      </div>
+    </div>
+
+    </div> 
+    
+{% endfor %}
+<input type="submit" value="Download Selected"></form>
+
+<div class="demo-container">
+  <a href="{% url 'venue_all_csv' %}">
+      <button>View All</button>
+  </a>
+{% endblock content %}
+</html>
+
+
